@@ -8,12 +8,15 @@
 package singleton
 
 import (
+	"fmt"
 	"testing"
 )
 
 func TestSingleton(t *testing.T) {
-	instance1 := GetInstance()
-	instance2 := GetInstance()
+	instance1 := GetInstance(1)
+	instance2 := GetInstance(2)
+
+	fmt.Println("实例对象的信息和地址", &instance1.data, &instance2.data)
 	if instance1 !=instance2 {
 		t.Fatal("instance is not equal")
 	}

@@ -28,10 +28,13 @@ var singleton *Singleton
 var once sync.Once
 
 // GetInstance 用于获取单例模式对象
-func GetInstance() *Singleton {
-	once.Do(func() {
-		singleton = &Singleton{26}
-	})
+func GetInstance(data int) *Singleton {
+	if singleton == nil {
+		once.Do(func() {
+			singleton = &Singleton{data}
+		})
+	}
+
 	fmt.Println("实例对象的信息和地址", singleton, &singleton.data)
 
 	return singleton
